@@ -72,7 +72,9 @@ select * from cte_1 where rankk=1
 
 ---------------- new approach---------\
 with cte_1 as(
-select datepart(year,sale_date) as years,datepart(month,sale_date) as months,sum(total_sale) as saless from sales.retail_sales_tb
+select datepart(year,sale_date) as years,
+ datepart(month,sale_date) as months,sum(total_sale) as saless 
+ from sales.retail_sales_tb
 group by datepart(year,sale_date),datepart(month,sale_date)
 )
 
@@ -92,8 +94,8 @@ order by sum(total_sale)desc
 --q9>  the number of unique customers who purchased items from each category
  select category,count(distinct customer_id) as unique_customer from sales.retail_sales_tb
  group by category
--- q10
---Write a SQL query to create each shift and number of orders(Example Morning <=12,Afternoon Between 12& 17,Evening>17)
+ 
+-- q10  Write a SQL query to create each shift and number of orders(Example Morning <=12,Afternoon Between 12& 17,Evening>17)
 select case when sale_time<='12:00:00' then 'Morning'
             when sale_time between '12:00:00' and '17:00:00' then 'Afternoon'
             else 'Evening'
@@ -103,4 +105,4 @@ from sales.retail_sales_tb
 group by case when sale_time<='12:00:00' then 'Morning'
             when sale_time between '12:00:00' and '17:00:00' then 'Afternoon'
             else 'Evening'
-        end
+         end
