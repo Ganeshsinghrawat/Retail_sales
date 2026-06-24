@@ -1,5 +1,5 @@
 use RETAIL;
--- how many sales we have
+**how many sales we have
 
 select count(*) as total_sale from sales.retail_sales_tb
 
